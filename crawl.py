@@ -13,20 +13,21 @@ for i in range(1, no_of_students):
 		string= '1RV13CS'+str(i)
 	usn.append(string)
 
-#path_to_chromedriver = '/Users/Tushar/Desktop/chromedriver'
-#browser = webdriver.Chrome(executable_path = path_to_chromedriver)
 browser = webdriver.PhantomJS()
 
-
+#URL of the main domain
 url = 'http://www.rvce.edu.in/results/'
 browser.get(url)
 
+#Interacting with webpage via xpath
 browser.find_element_by_xpath('//*[@id="ld"]/option[contains(text(), "Computer Science Engineering")]').click()
 browser.find_element_by_xpath('//*[@id="resultview"]/td[4]/label/input').clear()
 browser.find_element_by_xpath('//*[@id="resultview"]/td[4]/label/input').send_keys('4')
+#Hard Coded for 4th Semester CSE
 
 browser.find_element_by_name('Submit').click()
 
+#Excel Workbook Name
 workbook = xlsxwriter.Workbook('4thSem.xlsx')
 worksheet = workbook.add_worksheet()
 worksheet.set_column('A:A', 25)
